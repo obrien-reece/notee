@@ -16,6 +16,13 @@ class PersonRepository extends ServiceEntityRepository
         parent::__construct($registry, Person::class);
     }
 
+    public function getPersonID() {
+        return $this->createQueryBuilder('p')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     //    /**
     //     * @return Person[] Returns an array of Person objects
     //     */
